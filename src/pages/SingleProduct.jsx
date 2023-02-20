@@ -102,7 +102,7 @@ const SingleProduct = () => {
               </p>
             </div>
             <hr />
-            {stock && <AddToCart />}
+            {stock && <AddToCart product={product} />}
           </div>
         </div>
       </div>
