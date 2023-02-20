@@ -17,6 +17,44 @@ const products_reducer = (state, action) => {
     case SIDEBAR_CLOSE: {
       return { ...state, isSidebarOpen: false };
     }
+    case GET_PRODUCTS_BEGIN: {
+      return { ...state, products_loading: true };
+    }
+    case GET_PRODUCTS_SUCCESS: {
+      const featured_products = action.payload.filter(
+        (product) => product.featured
+      );
+      return {
+        ...state,
+        products_loading: false,
+        products: action.payload,
+        featured_products,
+      };
+    }
+    case GET_PRODUCTS_ERROR: {
+      return { ...state, products_loading: false, products_error: true };
+    }
+    case GET_SINGLE_PRODUCT_BEGIN: {
+      return {
+        ...state,
+        single_product_loading: true,
+        single_product_error: false,
+      };
+    }
+    case GET_SINGLE_PRODUCT_SUCCESS: {
+      return {
+        ...state,
+        single_product_loading: false,
+        single_product: action.payload,
+      };
+    }
+    case GET_SINGLE_PRODUCT_ERROR: {
+      return {
+        ...state,
+        single_product_loading: false,
+        single_product_error: true,
+      };
+    }
   }
 
   return state;

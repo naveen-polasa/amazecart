@@ -15,12 +15,15 @@ const Services = () => {
             aut, ipsa beatae explicabo quidem non?
           </p>
         </article>
-        <article className="flex flex-wrap justify-between gap-y-10 my-8">
+        <article className="flex flex-wrap justify-between gap-x-3  gap-y-10 my-8">
           {services.map((service) => {
             const { id, icon, title, text } = service;
             return (
-              <article key={id} className="w-80 h-72 mx-auto flex flex-col gap-y-4 items-center justify-center bg-red-300 rounded-xl px-4 border border-red-600 hover:scale-105 duration-300">
-                <h4 className="p-3 m-1 border rounded-full bg-white text-red-600 inline-block"  >
+              <article
+                key={id}
+                className="w-80 h-72 mx-auto flex flex-col gap-y-4 items-center justify-center bg-red-300 rounded-xl px-4 border border-red-500 hover:scale-105 duration-300"
+              >
+                <h4 className="p-3 m-1 border rounded-full bg-white text-red-600 inline-block">
                   {icon}
                 </h4>
                 <h4 className="capitalize font-semibold">{title}</h4>

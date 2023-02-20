@@ -12,7 +12,7 @@ const Sidebar = () => {
       <aside className=" absolute top-0 left-0 bg-white ">
         <div className="flex justify-between w-screen  px-5  items-center py-3">
           <img src={logo} alt="logo" className="w-32" />
-          <button onClick={closeSidebar}>
+          <button onClick={closeSidebar} className="mr-3.5">
             <FaTimes size="33px" className="text-red-600" />
           </button>
         </div>

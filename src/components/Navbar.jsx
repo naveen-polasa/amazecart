@@ -9,7 +9,7 @@ const Navbar = () => {
   const { openSidebar } = useProductsContext();
 
   return (
-    <nav className="py-3 h-20">
+    <nav className="py-3 h-20 border-b">
       <div className="flex justify-between px-5 max-w-7xl mx-auto">
         <Link to="/">
           <img src={logo} alt="logo" className="w-32" />
@@ -21,7 +21,10 @@ const Navbar = () => {
           {links.map((link) => {
             const { id, text, url } = link;
             return (
-              <li key={id} className="hover:scale-105 hover:border-b-2 border-red-400">
+              <li
+                key={id}
+                className="hover:scale-105 duration-200 hover:border-b-2 border-red-400"
+              >
                 <Link to={url}>{text}</Link>
               </li>
             );
