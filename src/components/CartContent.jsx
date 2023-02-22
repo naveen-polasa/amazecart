@@ -9,13 +9,13 @@ const CartContent = () => {
 
   return (
     <div className="px-5 max-w-7xl mx-auto">
-      <CartColumns />
+      {/* <CartColumns /> */}
       <hr />
       {cart.map((item) => {
         return <CartItem key={item.id} {...item} />;
       })}
       <hr />
-      <div className="flex justify-between mx-6">
+      <div className="flex justify-between mx-6 px-4">
         <Link to="/products">
           <button className="py-2 px-4 my-2 text-lg border border-orange-500 hover:scale-105 duration-300 text-white bg-orange-400 rounded-2xl">
             Continue Shopping
