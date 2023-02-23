@@ -24,7 +24,7 @@ const Filters = () => {
   const colors = getUniqueValues(all_products, "colors");
 
   return (
-    <section>
+    <section className="w-64 md:w-52 md:px-0 mx-auto px-2">
       <div className="pt-5">
         <form onSubmit={(e) => e.preventDefault()}>
           <div>
@@ -34,7 +34,7 @@ const Filters = () => {
               placeholder="Search"
               value={text}
               onChange={updateFilters}
-              className="h-10 rounded-lg border px-2"
+              className="w-full h-10 rounded-lg border px-2"
             />
           </div>
           <div className="py-3">

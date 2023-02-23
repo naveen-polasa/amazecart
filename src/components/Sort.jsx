@@ -30,9 +30,9 @@ const Sort = () => {
             }`}
           />
         </button>
-        <span className="ml-4">{products.length} Products Found</span>
+        <span className="ml-4 hidden md:flex">{products.length} Products Found</span>
       </div>
-      <span className="border w-36"></span>
+      <span className="border lg:w-80"></span>
       <div>
         <form>
           <label>Sort By : </label>
