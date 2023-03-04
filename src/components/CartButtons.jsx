@@ -2,10 +2,12 @@ import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../context/cart_context";
 import { useProductsContext } from "../context/products_context";
+import { useUserContext } from "../context/user_context";
 
 const CartButtons = () => {
   const { closeSidebar } = useProductsContext();
-  const {total_items} = useCartContext()
+  const { total_items } = useCartContext();
+  const { loginWithRedirect, myUser, logout } = useUserContext();
   return (
     <div className="flex gap-x-6 items-center">
       <Link
@@ -21,10 +23,23 @@ const CartButtons = () => {
           </span>
         </span>
       </Link>
-      <button className="flex gap-2 items-center font-semibold">
-        <span className="text-xl">Login</span>
-        <FaUserPlus size="24px" />
-      </button>
+      {myUser ? (
+        <button
+          className="flex gap-2 items-center font-semibold"
+          onClick={() => logout({ returnTo: window.location.origin })}
+        >
+          <span className="text-xl">Logout</span>
+          <FaUserMinus size="24px" />
+        </button>
+      ) : (
+        <button
+          className="flex gap-2 items-center font-semibold"
+          onClick={loginWithRedirect}
+        >
+          <span className="text-xl">Login</span>
+          <FaUserPlus size="24px" />
+        </button>
+      ) }
     </div>
   );
 };

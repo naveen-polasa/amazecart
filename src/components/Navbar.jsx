@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import { links } from "../utils/constants";
 import CartButtons from "./CartButtons";
 import { useProductsContext } from "../context/products_context";
+import { useUserContext } from "../context/user_context";
 
 const Navbar = () => {
   const { openSidebar } = useProductsContext();
-
+  const { myUser } = useUserContext();
   return (
     <nav className="py-3 h-20 border-b">
       <div className="flex justify-between px-5 max-w-7xl mx-auto">
@@ -29,6 +30,11 @@ const Navbar = () => {
               </li>
             );
           })}
+          {myUser && (
+            <li>
+              <Link to="./checkout">Checkout</Link>
+            </li>
+          )}
         </ul>
         <div className="hidden md:inline-flex ">
           <CartButtons />

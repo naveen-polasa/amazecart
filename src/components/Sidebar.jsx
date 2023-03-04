@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import { links } from "../utils/constants";
 import CartButtons from "./CartButtons";
 import { useProductsContext } from "../context/products_context";
+import { useUserContext } from "../context/user_context";
 const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useProductsContext();
-
+  const { myUser } = useUserContext();
+  
   return (
     <div className={`${isSidebarOpen ? "flex" : "hidden"}`}>
       <aside className=" absolute top-0 left-0 bg-white ">
@@ -29,12 +31,14 @@ const Sidebar = () => {
               </li>
             );
           })}
-          <li
-            className="hover:translate-x-1 hover:underline underline-offset-4 duration-300 "
-            onClick={closeSidebar}
-          >
-            <Link to="./checkout">checkout</Link>
-          </li>
+          {myUser && (
+            <li
+              className="hover:translate-x-1 hover:underline underline-offset-4 duration-300 "
+              onClick={closeSidebar}
+            >
+              <Link to="./checkout">Checkout</Link>
+            </li>
+          )}
         </ul>
         <div className="py-9 flex justify-center">
           <CartButtons />
