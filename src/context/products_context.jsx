@@ -16,7 +16,6 @@ import {
   GET_SINGLE_PRODUCT_SUCCESS,
   GET_SINGLE_PRODUCT_ERROR,
 } from "../actions";
-
 const ProductsContext = createContext();
 
 const defaultState = {
@@ -28,11 +27,13 @@ const defaultState = {
   single_product_loading: false,
   single_product_error: false,
   single_product: {},
+  current_page: 0,
+  prev_page: null,
+  next_page: null,
 };
 
 export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
-
   const openSidebar = () => {
     dispatch({ type: SIDEBAR_OPEN });
   };

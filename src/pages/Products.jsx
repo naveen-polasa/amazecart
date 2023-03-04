@@ -6,11 +6,11 @@ const Products = () => {
       <div className="bg-red-200">
         <PageHero title="products" />
       </div>
-      <div className="md:flex px-5 justify-between max-w-7xl mx-auto">
+      <div className="md:flex px-3 justify-between max-w-7xl mx-auto">
         <div>
           <Filters />
         </div>
-        <div>
+        <div className="md:w-[98%] mx-auto">
           <Sort />
           <ProductList />
         </div>

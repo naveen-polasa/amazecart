@@ -12,3 +12,12 @@ export const getUniqueValues = (products, type) => {
   }
   return ['all', ...new Set(unique)]
 };
+
+export const paginate =(products) => {
+  const itemsPerPage = 6
+  const totalPages = Math.ceil(products.length/itemsPerPage)
+  return Array.from({length:totalPages},(_,index)=> {
+    const endPoint = index * itemsPerPage
+    return products.slice(endPoint, endPoint+itemsPerPage)
+  })
+}

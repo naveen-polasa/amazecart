@@ -7,6 +7,8 @@ import {
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
+  PAGINATE_PRODUCTS,
+  SET_PAGE,
 } from "../actions";
 import { formatPrice } from "../utils/helpers";
 
@@ -57,7 +59,7 @@ const filter_reducer = (state, action) => {
           return b.name.localeCompare(a.name);
         });
       }
-      return { ...state, filtered_products: newProducts };
+      return { ...state, filtered_products: newProducts,currPage:0 };
     }
     case UPDATE_FILTERS: {
       const { name, value } = action.payload;
@@ -106,6 +108,12 @@ const filter_reducer = (state, action) => {
           shipping: false,
         },
       };
+    }
+    case PAGINATE_PRODUCTS: {
+      return { ...state, paginated: action.payload };
+    }
+    case SET_PAGE: {
+      return { ...state, currPage: action.payload };
     }
   }
   return state;

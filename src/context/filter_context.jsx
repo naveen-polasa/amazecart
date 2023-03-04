@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { useProductsContext } from "./products_context";
 import reducer from "../reducers/filter_reducer";
+import { paginate } from "../utils/helpers";
 
 import {
   LOAD_PRODUCTS,
@@ -11,6 +12,8 @@ import {
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
+  PAGINATE_PRODUCTS,
+  SET_PAGE,
 } from "../actions";
 
 const defaultState = {
@@ -29,8 +32,9 @@ const defaultState = {
     price: 0,
     shipping: false,
   },
+  paginated: [],
+  currPage: 0,
 };
-
 const FilterContext = createContext();
 
 export const FilterProvider = ({ children }) => {
@@ -79,6 +83,15 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: CLEAR_FILTERS });
   };
 
+  useEffect(() => {
+    const paginated = paginate(state.filtered_products);
+    dispatch({ type: PAGINATE_PRODUCTS, payload: paginated });
+  }, [state.filtered_products]);
+
+  const setPage = (pageNumber) => {
+    dispatch({ type: SET_PAGE, payload: pageNumber });
+  };
+
   return (
     <FilterContext.Provider
       value={{
@@ -88,6 +101,7 @@ export const FilterProvider = ({ children }) => {
         updateSort,
         updateFilters,
         clearFilters,
+        setPage,
       }}
     >
       {children}
